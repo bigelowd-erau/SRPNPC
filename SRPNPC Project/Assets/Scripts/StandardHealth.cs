@@ -20,13 +20,11 @@ public class StandardHealth : MonoBehaviour, IHealth
         get { return (float)currentHealth / (float)startingHealth; }
     }
 
-    public void TakeDamage(int amount)
+    public void ChangeHealth(int amount)
     {
-        Debug.Log("StandardHealth Damage Taken");
-        if (amount <= 0)
-            throw new ArgumentOutOfRangeException("Invalid Damage amount specified: " + amount);
+        Debug.Log("Health changed by " + amount);
 
-        currentHealth -= amount;
+        currentHealth = Mathf.Min(currentHealth + amount, startingHealth);
 
         OnHPPctChanged(CurrentHpPct);
 

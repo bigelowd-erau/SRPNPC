@@ -14,9 +14,9 @@ public class NPC : MonoBehaviour
         currentHp = startingHp;
     }
 
-    internal void TakeDamage(int amount)
+    internal void ChangeHealth(int amount)
     {
-        GetComponent<IHealth>().TakeDamage(amount);
+        GetComponent<IHealth>().ChangeHealth(amount);
     }
 
     private void Update()

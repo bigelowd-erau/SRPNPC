@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SHealthNPC: {fileID: 7718574602254847400, guid: c01845c1f940a8a47ab4352590303034, type: 3}
   NHHealthNPC: {fileID: 7718574602254847400, guid: b1813fcbc9cfa5744b4b3535b9302d98, type: 3}
+  BHealthNPC: {fileID: 7718574602254847400, guid: 23a397d67e5fa6046a641c7689bdc37d, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

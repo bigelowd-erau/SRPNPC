@@ -11,7 +11,7 @@ public class NumberOfHitsHealth : MonoBehaviour, IHealth
     private float invulnerabilityTimeAfterEachHit = 1.0f;
 
     private int hitsRemaining;
-    private bool canTakeDamage = true;
+    private bool canModHealth = true;
 
     public event Action<float> OnHPPctChanged = delegate (float f) { };
     public event Action OnDied = delegate { };
@@ -26,15 +26,18 @@ public class NumberOfHitsHealth : MonoBehaviour, IHealth
         hitsRemaining = healthInHits;
     }
 
-    public void TakeDamage(int amount)
+    public void ChangeHealth(int amount)
     {
-        Debug.Log("NumHitHealth Damage Taken");
-
-        if (canTakeDamage)
+        
+    
+        if (canModHealth)
         {
+            amount = amount > 0 ? 1 : -1;
+            Debug.Log("Health changed by " + amount);
+
             StartCoroutine(InvunlerabilityTimer());
 
-            hitsRemaining--;
+            hitsRemaining+=amount;
 
             OnHPPctChanged(CurrentHpPct);
 
@@ -48,8 +51,8 @@ public class NumberOfHitsHealth : MonoBehaviour, IHealth
 
     private IEnumerator InvunlerabilityTimer()
     {
-        canTakeDamage = false;
+        canModHealth = false;
         yield return new WaitForSeconds(invulnerabilityTimeAfterEachHit);
-        canTakeDamage = true;
+        canModHealth = true;
     }
 }
